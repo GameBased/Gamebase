@@ -29,3 +29,24 @@
 #include "core/IComponent.h"
 #include "core/IDrawable.h"
 #include "core/IDrawableComponent.h"
+#include "core/ILoadable.h"
+
+// Include utilities
+#include "utils/TimerBase.h"
+
+#include <memory>
+
+class Gamebase : IDrawableComponent, ILoadable
+{
+    protected:
+        std::unique_ptr<TimerBase> timer;
+
+    public:
+        Gamebase(std::unique_ptr<TimerBase> timerImplementation);
+
+        virtual bool Initialize() = 0;
+        virtual void Uninitialize() = 0;
+
+        virtual void Run();
+        void Run(unsigned int fps);
+};
