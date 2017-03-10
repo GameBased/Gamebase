@@ -2,7 +2,7 @@
 #include "utils/TimerBase.h"
 
 Gamebase::Gamebase(std::unique_ptr<TimerBase> timerImplementation)
-    : timer(std::move(timerImplementation))
+    : timer(std::move(timerImplementation)), _shouldQuit(false)
 {
     
 }
@@ -22,7 +22,7 @@ void Gamebase::Run(unsigned int frames_per_second)
     }
 
 	this->Load();
-	while(true)
+	while(!shouldQuit())
 	{
 		timer->Start();
 		this->Update();
@@ -36,4 +36,14 @@ void Gamebase::Run(unsigned int frames_per_second)
 		}
 	}
     this->Unload();
+}
+
+bool Gamebase::shouldQuit()
+{
+    return _shouldQuit;
+}
+
+void Gamebase::Quit()
+{
+    _shouldQuit = true;
 }

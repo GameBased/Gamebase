@@ -38,8 +38,12 @@
 
 class Gamebase : IDrawableComponent, ILoadable
 {
+    private:
+        bool _shouldQuit;
+
     protected:
         std::unique_ptr<TimerBase> timer;
+        bool shouldQuit();
 
     public:
         Gamebase(std::unique_ptr<TimerBase> timerImplementation);
@@ -49,4 +53,6 @@ class Gamebase : IDrawableComponent, ILoadable
 
         virtual void Run();
         void Run(unsigned int fps);
+
+        virtual void Quit();
 };
