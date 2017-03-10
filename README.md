@@ -1,4 +1,4 @@
 # Gamebase
-Base classes for Game Development + Wrapper over SDL
+Base classes for Game Development
 
 This is a work in progress.
