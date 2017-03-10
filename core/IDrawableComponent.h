@@ -3,7 +3,7 @@
 #include "IComponent.h"
 #include "IDrawable.h"
 
-class IDrawableComponent : IComponent, IDrawable
+class IDrawableComponent : public IComponent, public IDrawable
 {
     
 };
