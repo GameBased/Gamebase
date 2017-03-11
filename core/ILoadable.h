@@ -1,8 +1,11 @@
 #pragma once
 
-class ILoadable
+namespace gamebase
 {
-    public:
-        virtual void Load() = 0;
-        virtual void Unload() = 0;
-};
+    class ILoadable
+    {
+        public:
+            virtual void Load() = 0;
+            virtual void Unload() = 0;
+    };
+}

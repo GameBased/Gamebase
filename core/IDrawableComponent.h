@@ -3,7 +3,10 @@
 #include "IComponent.h"
 #include "IDrawable.h"
 
-class IDrawableComponent : public IComponent, public IDrawable
+namespace gamebase
 {
-    
-};
+    class IDrawableComponent : public IComponent, public IDrawable
+    {
+        
+    };
+}

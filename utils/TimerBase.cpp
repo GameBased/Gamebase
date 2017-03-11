@@ -1,48 +1,51 @@
 #include "TimerBase.h"
 
-TimerBase::TimerBase()
-    : startTicks(0), stopTicks(0), _isRunning(false)
+namespace gamebase
 {
-    
-}
-
-void TimerBase::Start()
-{
-    _isRunning = true;
-    startTicks = getTicks();
-}
-
-void TimerBase::Stop()
-{
-    if(!isRunning())
+    TimerBase::TimerBase()
+        : startTicks(0), stopTicks(0), _isRunning(false)
     {
-        // Already stopped
-        return;
+        
     }
-    _isRunning = false;
-    stopTicks = getTicks();
-}
 
-void TimerBase::Reset()
-{
-    _isRunning = false;
-    startTicks = 0;
-    stopTicks = 0;
-}
-
-unsigned int TimerBase::getElapsedTime()
-{
-    if(isRunning())
+    void TimerBase::Start()
     {
-        return getTicks() - startTicks;
+        _isRunning = true;
+        startTicks = getTicks();
     }
-    else
-    {
-        return stopTicks - startTicks;
-    }
-}
 
-bool TimerBase::isRunning()
-{
-    return _isRunning;
+    void TimerBase::Stop()
+    {
+        if(!isRunning())
+        {
+            // Already stopped
+            return;
+        }
+        _isRunning = false;
+        stopTicks = getTicks();
+    }
+
+    void TimerBase::Reset()
+    {
+        _isRunning = false;
+        startTicks = 0;
+        stopTicks = 0;
+    }
+
+    unsigned int TimerBase::getElapsedTime()
+    {
+        if(isRunning())
+        {
+            return getTicks() - startTicks;
+        }
+        else
+        {
+            return stopTicks - startTicks;
+        }
+    }
+
+    bool TimerBase::isRunning()
+    {
+        return _isRunning;
+    }
 }

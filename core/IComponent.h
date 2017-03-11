@@ -1,7 +1,10 @@
 #pragma once
 
-class IComponent
+namespace gamebase
 {
-    public:
-        virtual void Update() = 0;
-};
+    class IComponent
+    {
+        public:
+            virtual void Update() = 0;
+    };
+}

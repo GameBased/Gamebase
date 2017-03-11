@@ -1,7 +1,10 @@
 #pragma once
 
-class IDrawable
+namespace gamebase
 {
-    public:
-        virtual void Draw() = 0;
-};
+    class IDrawable
+    {
+        public:
+            virtual void Draw() = 0;
+    };
+}
