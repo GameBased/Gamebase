@@ -33,6 +33,7 @@
 
 // Include utilities
 #include "utils/TimerBase.h"
+#include "utils/IGraphicsDevice.h"
 
 #include <memory>
 
@@ -45,6 +46,7 @@ namespace gamebase {
         protected:
             std::unique_ptr<TimerBase> timer;
             bool shouldQuit();
+            std::unique_ptr<IGraphicsDevice> graphicsDevice;
 
         public:
             Gamebase(std::unique_ptr<TimerBase> timerImplementation);
@@ -56,5 +58,9 @@ namespace gamebase {
             void Run(unsigned int fps);
 
             virtual void Quit();
+            void registerGraphicsDevice(std::unique_ptr<IGraphicsDevice> graphicsDevice)
+            {
+                this->graphicsDevice = std::move(graphicsDevice);
+            }
     };
 }

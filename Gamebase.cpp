@@ -4,7 +4,8 @@
 namespace gamebase
 {
 	Gamebase::Gamebase(std::unique_ptr<TimerBase> timerImplementation)
-		: timer(std::move(timerImplementation)), _shouldQuit(false)
+		: timer(std::move(timerImplementation)),
+		graphicsDevice(nullptr), _shouldQuit(false)
 	{
 		
 	}
@@ -22,13 +23,22 @@ namespace gamebase
 			// Initialization failed
 			return;
 		}
+		
+		if(this->graphicsDevice == nullptr)
+		{
+			// Graphics device is not set
+			// TODO: Throw an exception here
+			return;
+		}
 
 		this->Load();
 		while(!shouldQuit())
 		{
 			timer->Start();
 			this->Update();
+			this->graphicsDevice->Clear();
 			this->Draw();
+			this->graphicsDevice->Clear();
 			timer->Stop();
 
 			// Wait until the time for the given frame is elapsed
